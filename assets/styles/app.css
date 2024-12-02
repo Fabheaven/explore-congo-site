@@ -1,3 +1,259 @@
+/* Réinitialisation de base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+  --content-width: 1189.7px;
+  --primary: rgb(2, 39, 65);
+  --gray: #6c757d;
+}
+
 body {
-    background-color: skyblue;
+  font-family: Arial, sans-serif;
+  background-color: #164092;
+  color: #333;
+  line-height: 1.6;
+}
+
+#app-container {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container-struct {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-container {
+  background: rgba(2, 39, 65,  0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  position: fixed; /* Position fixe */
+  width: 100%; /* La navbar occupe toute la largeur */
+  top: 0; /* Fixe la navbar en haut de la page */
+  left: 0;
+  z-index: 10; /* Priorité au-dessus du contenu */
+}
+
+
+.navbar-logo {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navbar-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+.navbar-menu ul li a:hover {
+  color: #00B7F1;
+  text-decoration: underline;
+}
+
+/* Conteneur principal */
+.navbar-items-right {
+  display: flex;
+  align-items: center; /* Centre verticalement tous les enfants */
+  padding: 10px; /* Ajustez selon vos besoins */
+}
+
+/* Drapeau */
+.flag {
+  width: 27px;
+  margin: 10px;
+}
+
+/* Liste des items */
+.navbar-items ul {
+  display: flex;
+  align-items: center; /* Centre verticalement les éléments dans la liste */
+  gap: 15px; /* Espacement entre les éléments */
+  list-style: none; /* Supprime les puces de la liste */
+  margin: 0;
+  padding: 0;
+}
+
+/* Liens */
+.navbar-button-link {
+  text-decoration: none; /* Supprime le soulignement */
+  color: #ffffff;
+  font-size: 14px; /* Taille de police */
+  display: inline-block; /* Pour une meilleure stylisation */
+}
+
+.navbar-button-link:hover {
+  text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
+/* Bouton */
+.navbar-button {
+  background: #3F814E;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar-button:hover {
+  background: #00B7F1;
+  color: #ffffff;
+}
+
+.button-down {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Positionner à droite */
+    padding: 0px;
+    position: absolute;
+    width: auto; /* Ajustement automatique de la largeur */
+    right: 7px;
+    top: 100%; /* Juste sous la barre de navigation */
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-down ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.button-down ul li {
+    margin-bottom: 10px; /* Espacement entre les boutons */
+}
+
+.button-down ul li:last-child {
+    margin-bottom: 0; /* Pas d'espacement pour le dernier élément */
+}
+
+.button-down ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center; /* Alignement des images et textes */
+    gap: 10px; /* Espace entre l'image et le texte */
+    padding: 5px;
+}
+
+.button-down ul li a img {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0; /* Empêche l'image de se redimensionner */
+}
+
+.button-down ul li a span {
+    color: #000000;
+    font-size: 14px; /* Taille ajustée */
+    white-space: nowrap; /* Empêche le débordement */
+    overflow: hidden; /* Cache le texte dépassant si nécessaire */
+    text-overflow: ellipsis; /* Ajoute "..." pour les textes trop longs */
+}
+
+.button-down {
+    display: none; /* Masque la div par défaut */
+}
+.button-down.active {
+    display: flex; /* Affiche la div lorsqu'elle a la classe "active" */
+}
+
+/* ------------ Button language ------- */
+.button-language-down {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Positionner à droite */
+    padding: 0px;
+    position: absolute;
+    width: auto; /* Ajustement automatique de la largeur */
+    right: 140px;
+    top: 100%; /* Juste sous la barre de navigation */
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button-language-down ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.button-language-down ul li {
+    margin-bottom: 10px; /* Espacement entre les boutons */
+}
+
+.button-language-down ul li:last-child {
+    margin-bottom: 0; /* Pas d'espacement pour le dernier élément */
+}
+
+.button-language-down ul li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center; /* Alignement des images et textes */
+    gap: 10px; /* Espace entre l'image et le texte */
+    padding: 5px;
+}
+
+/* Dimensions pour l'image du drapeau français */
+.fr-btn {
+    width: 30px; /* Largeur spécifique au drapeau français */
+    height: 20px; /* Hauteur spécifique au drapeau français */
+    flex-shrink: 0; /* Empêche le redimensionnement */
+}
+
+/* Dimensions pour l'image du drapeau américain */
+.us-btn {
+    width: 30px; /* Largeur spécifique au drapeau américain */
+    height: 37px; /* Hauteur spécifique au drapeau américain */
+    flex-shrink: 0; /* Empêche le redimensionnement */
+}
+
+
+.button-content {
+    display: flex;
+    align-items: center; /* Aligne l'image et le texte verticalement */
+    gap: 10px; /* Espace entre l'image et le texte */
+}
+
+/* Ajustement des spans */
+.button-language-down ul li a span {
+    color: #000000;
+    font-size: 14px;
+    line-height: 30px; /* Ajusté pour correspondre à la hauteur des images */
+    white-space: nowrap; /* Empêche le débordement */
+    overflow: hidden; /* Cache le texte dépassant si nécessaire */
+    text-overflow: ellipsis; /* Ajoute "..." pour les textes trop longs */
+}
+
+.button-language-down {
+    display: none; /* Masque la div par défaut */
+}
+.button-language-down.active {
+    display: flex; /* Affiche la div lorsqu'elle a la classe "active" */
 }
