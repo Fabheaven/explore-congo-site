@@ -19,6 +19,7 @@ body {
   background-color: #164092;
   color: #333;
   line-height: 1.6;
+  list-style: none;
 }
 
 #app-container {
@@ -35,20 +36,19 @@ body {
 }
 
 .navbar-container {
-  background: rgba(2, 39, 65,  0.4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-  backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  position: fixed; /* Position fixe */
-  width: 100%; /* La navbar occupe toute la largeur */
-  top: 0; /* Fixe la navbar en haut de la page */
-  left: 0;
-  z-index: 10; /* Priorité au-dessus du contenu */
-}
-
+    background: rgba(2, 39, 65, 0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
 
 .navbar-logo {
   margin-left: 20px;
@@ -56,21 +56,26 @@ body {
   font-weight: bold;
 }
 
-.navbar-menu ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
 
+.navbar-menu {
+    position: relative; /* Référence pour les sous-menus */
+  }
+  
+.navbar-menu ul {
+    display: flex;
+    gap: 60px;
+  }
+  
 .navbar-menu ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-}
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
 .navbar-menu ul li a:hover {
-  color: #00B7F1;
-  text-decoration: underline;
-}
+    color: #00B7F1;
+    text-decoration: underline;
+  }
 
 /* Conteneur principal */
 .navbar-items-right {
@@ -199,7 +204,6 @@ body {
 }
 
 .button-language-down ul {
-    list-style: none;
     padding: 0;
     margin: 0;
 }
@@ -256,4 +260,50 @@ body {
 }
 .button-language-down.active {
     display: flex; /* Affiche la div lorsqu'elle a la classe "active" */
+}
+
+/* ------ Sous-menus ------- */
+.navbar-sous-menu-container {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 100%; /* Aligner le sous-menu juste en dessous de la barre principale */
+    left: 50%; /* Positionner le sous-menu au centre */
+    transform: translateX(-50%); /* Centrer précisément via translation */
+    z-index: 10;
+    background-color: #6c757d;
+    width: 100%; /* Ajustement automatique à la largeur du contenu */
+    padding: 10px 20px; /* Espacement interne */
+    border-bottom: 2px solid rgba(28, 125, 227, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sous-menu ul {
+    display: flex;
+    gap: 20px; /* Espacement entre les éléments */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les paddings par défaut */
+    list-style: none; /* Supprime les puces */
+    transform: translateX(-20%); /* Décale le contenu vers la gauche */
+}
+
+.sous-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.sous-menu ul li a:hover {
+    color: #00B7F1;
+    text-decoration: underline;
+}
+
+.sous-menu {
+    display: none; /* Par défaut, les menus sont cachés */
+}
+
+.sous-menu.active {
+    display: block; /* Le menu actif est visible */
 }

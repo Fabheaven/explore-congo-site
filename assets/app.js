@@ -34,4 +34,45 @@ document.addEventListener('click', (event) => {
     }
 });
 
+// --------- Sous-menus--------
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('[class^="home-"]'); // Boutons déclencheurs
+    const sousMenuContainer = document.querySelector('.navbar-sous-menu-container'); // Le conteneur principal
+    const menuContainers = document.querySelectorAll('.navbar-sous-menu-container .sous-menu');
+    let activeMenu = null; // Stocke le menu actuellement visible
+
+    // Fonction pour masquer tous les sous-menus et le conteneur
+    const hideAllMenus = () => {
+        sousMenuContainer.style.display = 'none';
+        menuContainers.forEach(menu => menu.style.display = 'none');
+        activeMenu = null;
+    };
+
+    // Afficher ou cacher le sous-menu correspondant
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation(); // Empêche la propagation
+            const targetClass = item.className.split(' ')[0]; // Identifie la classe cible
+            const targetMenu = document.querySelector(`.navbar-sous-menu-container .${targetClass}`);
+
+            // Vérifie si le menu cliqué est déjà actif
+            if (activeMenu === targetMenu) {
+                hideAllMenus(); // Cache tout si on clique à nouveau sur l'élément actif
+            } else {
+                hideAllMenus(); // Masque les autres menus
+                sousMenuContainer.style.display = 'flex'; // Affiche le conteneur principal
+                targetMenu.style.display = 'block'; // Affiche le menu correspondant
+                activeMenu = targetMenu; // Définit le nouveau menu actif
+            }
+        });
+    });
+
+    // Masquer tout au clic extérieur
+    document.addEventListener('click', () => {
+        hideAllMenus();
+    });
+});
+
+
+
 
