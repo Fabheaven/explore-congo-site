@@ -415,18 +415,20 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out;
   }
   
   .slides img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
   
   /* Cacher les images non actives */
   .slides img:not(.active) {
     display: none;
+    opacity: 1;
   }
   
   
@@ -477,7 +479,29 @@ body {
   }
   
   .dotsContainer .active{
-      background-color: #3F814E;
+      background-color: var(--secondary-1);
   }
+
+  @keyframes next {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes prev {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
   
   

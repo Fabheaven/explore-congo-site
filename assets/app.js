@@ -77,6 +77,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//------------les slides-----------------------
+
+// Variables globales
+let slideImages = document.querySelectorAll('.slides img');
+let next = document.querySelector('.next');
+let prev = document.querySelector('.prev');
+let dots = document.querySelectorAll('.dot');
+let container = document.querySelector('.slide-container');
+let counter = 0;
+let autoSlideInterval;
+
+// Fonction pour passer à l'image suivante
+function slideNext() {
+    slideImages[counter].classList.remove('active');
+    slideImages[counter].style.animation = 'none'; // Supprimer toute animation en cours
+    counter = (counter + 1) % slideImages.length;
+    slideImages[counter].classList.add('active');
+    slideImages[counter].style.animation = 'next 1s ease-in forwards';
+    updateIndicators();
+}
+
+// Fonction pour revenir à l'image précédente
+function slidePrev() {
+    slideImages[counter].classList.remove('active');
+    slideImages[counter].style.animation = 'none'; // Supprimer toute animation en cours
+    counter = (counter - 1 + slideImages.length) % slideImages.length;
+    slideImages[counter].classList.add('active');
+    slideImages[counter].style.animation = 'prev 1s ease-in forwards';
+    updateIndicators();
+}
+
+// Fonction pour mettre à jour les indicateurs
+function updateIndicators() {
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[counter].classList.add('active');
+}
+
+// Fonction pour basculer vers une image spécifique (via les indicateurs)
+dots.forEach(dot => {
+    dot.addEventListener('click', function () {
+        let imageId = parseInt(this.getAttribute('data-id'));
+        if (imageId !== counter) {
+            slideImages[counter].classList.remove('active');
+            slideImages[counter].style.animation = 'none'; // Supprimer toute animation en cours
+            counter = imageId;
+            slideImages[counter].classList.add('active');
+            slideImages[counter].style.animation = 'next 1s ease-in forwards';
+            updateIndicators();
+        }
+    });
+});
+
+// Fonction d'auto-slide
+function autoSliding() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(slideNext, 3000);
+}
+
+// Démarrage de l'auto-slide
+autoSliding();
+
+// Arrêter le slide lorsque la souris est sur le container
+container.addEventListener('mouseover', () => clearInterval(autoSlideInterval));
+
+// Reprendre le slide lorsque la souris quitte le container
+container.addEventListener('mouseout', autoSliding);
+
+// Écouteurs pour les boutons
+next.addEventListener('click', slideNext);
+prev.addEventListener('click', slidePrev);
 
 
 
