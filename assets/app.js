@@ -35,11 +35,15 @@ document.addEventListener('click', (event) => {
 });
 
 // --------- Sous-menus--------
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('[class^="home-"]'); // Boutons déclencheurs
     const sousMenuContainer = document.querySelector('.navbar-sous-menu-container'); // Le conteneur principal
     const menuContainers = document.querySelectorAll('.navbar-sous-menu-container .sous-menu');
     let activeMenu = null; // Stocke le menu actuellement visible
+
+    // Assure que la navbar-sous-menu-container est cachée au chargement
+    sousMenuContainer.style.display = 'none';
 
     // Fonction pour masquer tous les sous-menus et le conteneur
     const hideAllMenus = () => {
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllMenus();
     });
 });
+
 
 
 

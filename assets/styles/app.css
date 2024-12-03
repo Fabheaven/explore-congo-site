@@ -9,15 +9,20 @@
 }
 
 :root {
-  --content-width: 1189.7px;
-  --primary: rgb(2, 39, 65);
-  --gray: #6c757d;
+    --color-gray-1: #333;;
+    --color-gray-2: #6c757d;
+    --secondary-1: #3F814E;
+    --secondary-2: rgb(2, 39, 65);
+    --color-primary: #00B7F1;
+    --color-white-1: #fff;
+    --color-white-2: #e9e9e9;
+    --color-black: #000204;
+    --color-black-1: #292a2c;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #164092;
-  color: #333;
+  color: var(--color-gray-1);
   line-height: 1.6;
   list-style: none;
 }
@@ -40,7 +45,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    color: var(--color-white-1);
     backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     position: fixed;
@@ -67,14 +72,15 @@ body {
   }
   
 .navbar-menu ul li a {
-    color: #fff;
+    color: var(--color-white-1);
     text-decoration: none;
     font-size: 16px;
   }
   
 .navbar-menu ul li a:hover {
-    color: #00B7F1;
+    color: var(--color-primary);
     text-decoration: underline;
+    transition: all 1s;
   }
 
 /* Conteneur principal */
@@ -103,30 +109,32 @@ body {
 /* Liens */
 .navbar-button-link {
   text-decoration: none; /* Supprime le soulignement */
-  color: #ffffff;
+  color: var(--color-white-1);
   font-size: 14px; /* Taille de police */
   display: inline-block; /* Pour une meilleure stylisation */
 }
 
 .navbar-button-link:hover {
   text-decoration: underline; /* Ajoute un soulignement au survol */
+  transition: all 1s;
 }
 
 /* Bouton */
 .navbar-button {
-  background: #3F814E;
+  background: var(--secondary-1);
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--color-white-1);
   border: none;
   border-radius: 25px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .navbar-button:hover {
-  background: #00B7F1;
-  color: #ffffff;
+  background: var(--color-primary);
+  color: var(--color-white-1);
+  transition: all 1s;
 }
 
 .button-down {
@@ -139,7 +147,7 @@ body {
     width: auto; /* Ajustement automatique de la largeur */
     right: 7px;
     top: 100%; /* Juste sous la barre de navigation */
-    background-color: #FFFFFF;
+    background-color: var(--color-white-1);
     border-radius: 6px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -173,7 +181,7 @@ body {
 }
 
 .button-down ul li a span {
-    color: #000000;
+    color: var(--color-black);
     font-size: 14px; /* Taille ajustée */
     white-space: nowrap; /* Empêche le débordement */
     overflow: hidden; /* Cache le texte dépassant si nécessaire */
@@ -198,7 +206,7 @@ body {
     width: auto; /* Ajustement automatique de la largeur */
     right: 140px;
     top: 100%; /* Juste sous la barre de navigation */
-    background-color: #FFFFFF;
+    background-color: var(--color-white-1);
     border-radius: 6px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -247,12 +255,16 @@ body {
 
 /* Ajustement des spans */
 .button-language-down ul li a span {
-    color: #000000;
+    color: var(--color-black);
     font-size: 14px;
     line-height: 30px; /* Ajusté pour correspondre à la hauteur des images */
     white-space: nowrap; /* Empêche le débordement */
     overflow: hidden; /* Cache le texte dépassant si nécessaire */
     text-overflow: ellipsis; /* Ajoute "..." pour les textes trop longs */
+}
+
+.button-content:hover span {
+    text-decoration: underline;
 }
 
 .button-language-down {
@@ -262,7 +274,7 @@ body {
     display: flex; /* Affiche la div lorsqu'elle a la classe "active" */
 }
 
-/* ------ Sous-menus ------- */
+/* ------ Sous-menus -------------------- */
 .navbar-sous-menu-container {
     display: none; /* Caché par défaut */
     position: absolute;
@@ -270,10 +282,14 @@ body {
     left: 50%; /* Positionner le sous-menu au centre */
     transform: translateX(-50%); /* Centrer précisément via translation */
     z-index: 10;
-    background-color: #6c757d;
+    background: linear-gradient(
+        274.71deg,
+        rgba(4, 69, 116, 0) 1.99%,
+        rgba(6, 144, 242, 0.616) 144.19%
+      );
     width: 100%; /* Ajustement automatique à la largeur du contenu */
     padding: 10px 20px; /* Espacement interne */
-    border-bottom: 2px solid rgba(28, 125, 227, 0.6);
+    border-bottom: 2px solid var(--gray);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,15 +305,15 @@ body {
 }
 
 .sous-menu ul li a {
-    color: #fff;
+    color: var(--color-white-1);
     text-decoration: none;
     font-size: 16px;
     margin: 10px;
 }
 
 .sous-menu ul li a:hover {
-    color: #00B7F1;
-    text-decoration: underline;
+    color: var(--color-primary);
+    transition: all 1s;
 }
 
 .sous-menu {
@@ -307,3 +323,161 @@ body {
 .sous-menu.active {
     display: block; /* Le menu actif est visible */
 }
+
+/*---------------------Conteneur principal pour la ligne et le message */
+.header-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement les éléments */
+    gap: 20px; /* Espacement entre la ligne et le contenu */
+    position: absolute;
+    left: 109px;
+    top: 257px;
+    z-index: 10;
+  }
+  
+  /* Ligne verticale */
+  .line-left-header {
+    width: 0px; /* Ligne verticale */
+    height: 210px; /* Hauteur ajustable selon vos besoins */
+    border: 1px solid --color-white-1;
+    opacity: 0.5;
+  }
+  
+  /* Section des messages */
+  .header-msg {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: flex-start; /* Aligne les éléments à gauche */
+    gap: 20px;
+  }
+  
+  /* Liste des messages */
+  .header-msg ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header-msg ul li {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: var(--color-white-1);
+  }
+  
+  /* Bouton */
+  .header-button {
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--color-white-1);
+    background: transparent; /* Fond transparent */
+    border: 1px solid --color-white-1; /* Bordure solide */
+    border-radius: 500px; /* Bords arrondis */
+    width: 255px;
+    height: 48px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .header-button:hover {
+    background: var(--color-primary);
+    color: var(--color-white-1);
+    border: none;
+  }
+
+  /* --------Slides------------------*/
+.slide-container {
+   
+    position: absolute;
+    width: 100%;
+    height: 595px;
+    top: 0;
+    background: linear-gradient(
+        274.71deg,
+        rgba(2, 39, 65, 0) 1.99%,
+        rgba(2, 39, 65, 0.4) 144.19%
+      );
+    background-size: cover;
+    background-position: 50% 32%;
+    overflow: hidden;
+  }
+  
+  /* Carrousel */
+  .slide-container {
+    position: absolute;
+    width: 100%;
+    height: 595px;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Cacher les images non actives */
+  .slides img:not(.active) {
+    display: none;
+  }
+  
+  
+  span.next, span.prev {
+      position: absolute;
+      top: 55%;
+      transform: translateY(-50%);
+      padding: 10px 20px; /* Ajustez le padding pour une taille raisonnable */
+      color: var(--secondary-1);
+      font-size: 24px;
+      font-weight: bold;
+      transition: 0.5s;
+      border-radius: 3px;
+      user-select: none;
+      cursor: pointer;
+      z-index: 1;
+  }
+  
+  span.next {
+      right: 20px;
+  }
+  span.prev {
+      left: 20px;
+  }
+  
+  span.next:hover, span.prev:hover {
+      background-color: var(--secondary-1);
+      opacity: 0.8;
+      color: var(--color-white-1);
+  }
+  
+  .dotsContainer{
+      position: absolute;
+      bottom: -150px;
+      z-index: 3;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  
+  .dotsContainer .dot{
+  width: 20px;
+  height: 20px;
+  margin: 200px 7px;
+  border: 3px solid #3F814E;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  }
+  
+  .dotsContainer .active{
+      background-color: #3F814E;
+  }
+  
+  
